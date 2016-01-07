@@ -8,20 +8,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.oocl.ita.shuttlebusschedule.entity.User;
 import com.oocl.ita.shuttlebusschedule.service.StationService;
-import com.oocl.ita.shuttlebusschedule.service.UserService;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends ActivityGroup {
     private StationService service;
