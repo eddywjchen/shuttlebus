@@ -1,9 +1,10 @@
-package entity;
+package com.oocl.ita.shuttlebusschedule.entity;
 
 /**
  * Created by CHENED2 on 1/7/2016.
  */
 public class User {
+
     private String username;
     private String pwd;
     private String dept;

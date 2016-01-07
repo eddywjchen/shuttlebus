@@ -5,22 +5,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.oocl.ita.shuttlebusschedule.entity.User;
-
-
-public class MainActivity extends AppCompatActivity {
+public class StationStatisticsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station_statistics);
-        setStationStatisticsData();
-        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_station_statistics, menu);
         return true;
     }
 
@@ -37,9 +33,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void setStationStatisticsData() {
-        User user = new User();
     }
 }
