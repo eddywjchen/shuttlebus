@@ -20,6 +20,10 @@
             android:name=".StationStatisticsActivity"
             android:label="@string/title_activity_station_statistics" >
         </activity>
+        <activity
+            android:name=".UserRidingActivity"
+            android:label="@string/title_activity_station_statistics" >
+        </activity>
     </application>
 
 </manifest>
