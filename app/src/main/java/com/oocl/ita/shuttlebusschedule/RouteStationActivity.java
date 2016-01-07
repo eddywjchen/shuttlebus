@@ -10,7 +10,6 @@ import android.widget.SimpleAdapter;
 
 import com.oocl.ita.shuttlebusschedule.service.StationService;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,8 +26,8 @@ public class RouteStationActivity extends ListActivity {
         service = new StationService();
         List<Map<String, String>> stations = service.getData();
         SimpleAdapter routeStationAdapter = new SimpleAdapter(this, stations, R.layout.route_station_summary,
-                new String[]{"routeName", "stationName", "regularUserCount", "realTimeUserCount", "changedCount"},
-                new int[]{R.id.routeName, R.id.stationName, R.id.regularUserCount, R.id.realTimeUserCount, R.id.changedCount});
+                new String[]{"routeName", "stationName", "regularCount", "realTimeCount", "changeCount"},
+                new int[]{R.id.routeName, R.id.stationName, R.id.regularCount, R.id.realTimeCount, R.id.changeCount});
         this.setListAdapter(routeStationAdapter);
         this.getListView().setOnItemClickListener(new ItemClickListener());
     }
