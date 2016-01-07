@@ -37,4 +37,10 @@
         android:id="@+id/stationStatisticsView"
         />
 
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/routeStationView"
+        />
+
 </RelativeLayout>
