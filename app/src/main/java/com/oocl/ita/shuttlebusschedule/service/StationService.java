@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by WEIWE on 1/7/2016.
  */
 public class StationService {
-    public StationService(MainActivity mainActivity) {
+    public StationService() {
     }
 
     public List<Map<String, String>> getStations(int routeId, int stationId) {

@@ -35,9 +35,11 @@ public class MainActivity extends ActivityGroup {
 
         tabHost.setup(this.getLocalActivityManager());
         // 这里content的设置采用了布局文件中的view
-        Intent intent = new Intent(this, UserRidingActivity.class);
+        Intent intent = new Intent(this, RouteStationActivity.class);
+        Intent intent2 = new Intent(this, RegisterActivity.class);
         tabHost.addTab(tabHost.newTabSpec("tab1")
-                .setIndicator("Home").setContent(R.id.tab1));
+                .setIndicator("Home").setContent(intent2));
+
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("Summary")
                 .setContent(intent));
         updateTab(tabHost);
@@ -52,29 +54,6 @@ public class MainActivity extends ActivityGroup {
             tv.setTextSize(16);
             tv.setTypeface(Typeface.DEFAULT);
             tv.setTextColor(Color.WHITE);// 设置字体和风格
-        }
-    }
-
-    private void setRouteStationData() {
-        ListView listView = (ListView) this.findViewById(R.id.routeStationView);
-
-        service = new StationService(this);
-        List<Map<String, String>> stations = service.getData();
-        SimpleAdapter routeStationAdapter = new SimpleAdapter(this, stations, R.layout.route_station_summary,
-                new String[]{"routeName", "stationName", "regularUserCount", "realTimeUserCount", "changedCount"},
-                new int[]{R.id.routeName, R.id.stationName, R.id.regularUserCount, R.id.realTimeUserCount, R.id.changedCount});
-        listView.setAdapter(routeStationAdapter);
-        listView.setOnItemClickListener(new ItemClickListener());
-    }
-
-    private final class ItemClickListener implements AdapterView.OnItemClickListener {
-
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            ListView listView = (ListView) parent;
-            HashMap<String, Object> data = (HashMap<String, Object>) listView.getItemAtPosition(position);
-            Intent intent = new Intent("com.oocl.ita.shuttlebusschedule.GET_USER_RIDING_ACTION");
-            //TODO
-            startActivity(intent);
         }
     }
 
@@ -100,24 +79,4 @@ public class MainActivity extends ActivityGroup {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setStationStatisticsMockupData() {
-        ListView listView = (ListView) this.findViewById(R.id.stationStatisticsView);
-        UserService userService = new UserService();
-        List<User> users = userService.getScrollData();
-        List<HashMap<String, Object>> data = new ArrayList<HashMap<String, Object>>();
-        for (User user : users) {
-            HashMap<String, Object> item = new HashMap<String, Object>();
-//            item.put("id", user.getId());
-            item.put("username", user.getUsername());
-//            item.put("dept", user.getDept());
-            item.put("boardingStation", user.getBoardingStation());
-            item.put("egressStation", user.getEgressStation());
-            data.add(item);
-        }
-        SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.user_item,
-                new String[]{"username", "boardingStation", "egressStation"}, new int[]{R.id.username, R.id.boardingStation, R.id.egressStation});
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new ItemClickListener());
-
-    }
 }

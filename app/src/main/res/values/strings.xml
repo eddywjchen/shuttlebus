@@ -4,4 +4,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_station_statistics">StationStatistics</string>
+    <string name="spinner_shuttle_up">上班站点</string>
+    <string name="spinner_shuttle_down">下班站点</string>
+    <string name="user_info">Hi, Carson</string>
+    <string name="update_button">Update</string>
 </resources>
