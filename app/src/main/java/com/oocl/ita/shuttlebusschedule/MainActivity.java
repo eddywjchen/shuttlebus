@@ -12,7 +12,9 @@ import android.widget.SimpleAdapter;
 
 import com.oocl.ita.shuttlebusschedule.entity.User;
 import com.oocl.ita.shuttlebusschedule.service.StationService;
+import com.oocl.ita.shuttlebusschedule.service.UserService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station_statistics);
-        setStationStatisticsData();
+        setStationStatisticsMockupData();
 
         setRouteStationData();
         }
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         service = new StationService(this);
         List<Map<String, String>> stations = service.getData();
         SimpleAdapter routeStationAdapter = new SimpleAdapter(this, stations, R.layout.route_station_summary,
-                new String[]{"routeId", "stationName", "regularUserCount","realTimeUserCount","changedCount"},
-                new int[]{R.id.routeId, R.id.stationName, R.id.regularUserCount,R.id.realTimeUserCount,R.id.changedCount});
+                new String[]{"routeName", "stationName", "regularUserCount","realTimeUserCount","changedCount"},
+                new int[]{R.id.routeName, R.id.stationName, R.id.regularUserCount,R.id.realTimeUserCount,R.id.changedCount});
         listView.setAdapter(routeStationAdapter);
         listView.setOnItemClickListener(new ItemClickListener());
     }
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             ListView listView = (ListView) parent;
             HashMap<String, Object> data = (HashMap<String, Object>) listView.getItemAtPosition(position);
             Intent intent = new Intent("com.oocl.ita.shuttlebusschedule.GET_USER_RIDING_ACTION");
+            //TODO
             startActivity(intent);
         }
     }
@@ -72,7 +75,24 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setStationStatisticsData() {
-        User user = new User();
+    private void setStationStatisticsMockupData() {
+        ListView listView = (ListView) this.findViewById(R.id.stationStatisticsView);
+        UserService userService = new UserService();
+        List<User> users = userService.getScrollData();
+        List<HashMap<String, Object>> data = new ArrayList<HashMap<String,Object>>();
+        for(User user : users){
+            HashMap<String, Object> item = new HashMap<String, Object>();
+//            item.put("id", user.getId());
+            item.put("username", user.getUsername());
+//            item.put("dept", user.getDept());
+            item.put("boardingStation", user.getBoardingStation());
+            item.put("egressStation", user.getEgressStation());
+            data.add(item);
+        }
+        SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.user_item,
+                new String[]{"username", "boardingStation", "egressStation"}, new int[]{R.id.username, R.id.boardingStation, R.id.egressStation});
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new ItemClickListener());
+
     }
 }

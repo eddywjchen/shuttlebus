@@ -4,12 +4,13 @@ package com.oocl.ita.shuttlebusschedule.entity;
  * Created by WEIWE on 1/7/2016.
  */
 public class Station {
-    private String routeId;
-    private String stationId;
+    private int routeId;
+    private String routeName;
+    private int stationId;
     private String stationName;
-    private String regularUserCount;
-    private String realTimeUserCount;
-    private String changedCount;
+    private int regularUserCount;
+    private int realTimeUserCount;
+    private int changedCount;
 
     public String getStationName() {
         return stationName;
@@ -19,43 +20,51 @@ public class Station {
         this.stationName = stationName;
     }
 
-    public String getRegularUserCount() {
+    public int getRegularUserCount() {
         return regularUserCount;
     }
 
-    public void setRegularUserCount(String regularUserCount) {
+    public void setRegularUserCount(int regularUserCount) {
         this.regularUserCount = regularUserCount;
     }
 
-    public String getRealTimeUserCount() {
+    public int getRealTimeUserCount() {
         return realTimeUserCount;
     }
 
-    public void setRealTimeUserCount(String realTimeUserCount) {
+    public void setRealTimeUserCount(int realTimeUserCount) {
         this.realTimeUserCount = realTimeUserCount;
     }
 
-    public String getChangedCount() {
+    public int getChangedCount() {
         return changedCount;
     }
 
-    public void setChangedCount(String changedCount) {
+    public void setChangedCount(int changedCount) {
         this.changedCount = changedCount;
     }
 
-    public String getRouteId() {
+    public int getRouteId() {
         return routeId;
     }
 
-    public void setRouteId(String routeId) {
+    public void setRouteId(int routeId) {
         this.routeId = routeId;
     }
 
-    public String getStationId() {
+    public int getStationId() {
         return stationId;
     }
 
-    public void setStationId(String stationId) {
+    public void setStationId(int stationId) {
         this.stationId = stationId;
+    }
+
+    public String getRouteName() {
+        return routeName;
+    }
+
+    public void setRouteName(String routeName) {
+        this.routeName = routeName;
     }
 }

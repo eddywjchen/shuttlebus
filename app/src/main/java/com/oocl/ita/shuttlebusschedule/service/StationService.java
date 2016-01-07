@@ -21,7 +21,8 @@ public class StationService {
         List<Map<String, String>> station1 = new ArrayList<Map<String,String>>();
         for(Station station : stations){
             HashMap<String, String> item = new HashMap<String, String>();
-            item.put("routeId", station.getRouteId());
+            item.put("routeId", String.valueOf(station.getRouteId()));
+            item.put("routeName", station.getRouteName());
             item.put("stationName", station.getStationName());
             item.put("regularCount", String.valueOf(station.getRegularUserCount()));
             item.put("realTimeCount", String.valueOf(station.getRealTimeUserCount()));
@@ -35,7 +36,7 @@ public class StationService {
         List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("routeId", "1");
+        map.put("routeName", "1");
         map.put("stationName", "tangjia");
         map.put("regularCount", "12");
         map.put("realTimeCount", "12");
@@ -43,7 +44,7 @@ public class StationService {
         list.add(map);
 
         map = new HashMap<String, String>();
-        map.put("routeId", "1");
+        map.put("routeName", "1");
         map.put("stationName", "tangjia");
         map.put("regularCount", "12");
         map.put("realTimeCount", "12");
@@ -51,7 +52,7 @@ public class StationService {
         list.add(map);
 
         map = new HashMap<String, String>();
-        map.put("routeId", "1");
+        map.put("routeName", "1");
         map.put("stationName", "tangjia");
         map.put("regularCount", "12");
         map.put("realTimeCount", "12");

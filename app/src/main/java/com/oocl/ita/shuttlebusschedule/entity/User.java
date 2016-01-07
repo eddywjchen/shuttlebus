@@ -5,6 +5,7 @@ package com.oocl.ita.shuttlebusschedule.entity;
  */
 public class User {
 
+    private long id;
     private String username;
     private String pwd;
     private String dept;
@@ -49,5 +50,13 @@ public class User {
 
     public void setEgressStation(String egressStation) {
         this.egressStation = egressStation;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
